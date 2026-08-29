@@ -1,0 +1,231 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "IBM Plex Sans JP", "Hiragino Sans", "Noto Sans JP", sans-serif;
+  --font-display: "Fraunces", "Iowan Old Style", "Palatino Linotype", serif;
+
+  --color-background: #e4d7c3;
+  --color-foreground: #2a241c;
+  --color-card: #f4eee3;
+  --color-card-foreground: #2a241c;
+  --color-primary: #2c4a42;
+  --color-primary-foreground: #f4efe6;
+  --color-secondary: #ddd2bf;
+  --color-secondary-foreground: #2a241c;
+  --color-muted: #e8dcc8;
+  --color-muted-foreground: #6d6458;
+  --color-accent: #efe4cc;
+  --color-accent-foreground: #2a241c;
+  --color-border: #cbbda8;
+  --color-input: #cbbda8;
+  --color-ring: #2c4a42;
+  --color-destructive: #8f3d32;
+  --color-destructive-foreground: #faf7f1;
+  --color-paper: #fbf6ea;
+  --color-rule: #c45c4a;
+  --color-desk: #cbb89a;
+  --color-ink: #2a241c;
+  --color-memo: #efe6c9;
+
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+  --radius: 6px;
+
+  --shadow-border:
+    0 0 0 1px color-mix(in oklab, var(--color-foreground) 10%, transparent),
+    0 1px 1px color-mix(in oklab, var(--color-foreground) 6%, transparent);
+  --shadow-border-hover:
+    0 0 0 1px color-mix(in oklab, var(--color-foreground) 16%, transparent),
+    0 4px 10px color-mix(in oklab, var(--color-foreground) 8%, transparent);
+  --shadow-paper:
+    0 0 0 1px color-mix(in oklab, var(--color-foreground) 10%, transparent),
+    0 1px 0 color-mix(in oklab, white 55%, transparent),
+    3px 5px 0 -1px color-mix(in oklab, var(--color-paper) 70%, var(--color-desk)),
+    3px 5px 0 0 color-mix(in oklab, var(--color-foreground) 8%, transparent),
+    8px 14px 28px color-mix(in oklab, var(--color-foreground) 12%, transparent);
+
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    line-height: 1.55;
+    background-image:
+      radial-gradient(ellipse 80% 50% at 50% -10%, color-mix(in oklab, white 28%, transparent), transparent 60%),
+      repeating-linear-gradient(
+        90deg,
+        color-mix(in oklab, var(--color-foreground) 4%, transparent) 0 1px,
+        transparent 1px 7px
+      );
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  input,
+  textarea,
+  select,
+  button {
+    font-size: 16px;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled),
+  label,
+  summary,
+  input[type="submit"],
+  input[type="button"],
+  input[type="file"],
+  select {
+    cursor: pointer;
+    touch-action: manipulation;
+  }
+
+  ::selection {
+    background: color-mix(in oklab, var(--color-rule) 22%, transparent);
+    color: var(--color-foreground);
+  }
+}
+
+.font-display {
+  font-family: var(--font-display);
+  font-optical-sizing: auto;
+}
+
+.paper-grain {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.18  0 0 0 0 0.15  0 0 0 0 0.11  0 0 0 0.28 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  background-size: 180px 180px;
+}
+
+.paper-shadow {
+  box-shadow: var(--shadow-paper);
+}
+
+.hairline {
+  box-shadow: var(--shadow-border);
+}
+
+.paper-sheet {
+  position: relative;
+  background-color: var(--color-paper);
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.22  0 0 0 0 0.18  0 0 0 0 0.12  0 0 0 0.18 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  background-size: 220px 220px;
+  box-shadow: var(--shadow-paper);
+  border-radius: var(--radius-lg);
+}
+
+.paper-ruled {
+  background-image:
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.22  0 0 0 0 0.18  0 0 0 0 0.12  0 0 0 0.14 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>"),
+    repeating-linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent 27px,
+      color-mix(in oklab, var(--color-rule) 16%, transparent) 27px,
+      color-mix(in oklab, var(--color-rule) 16%, transparent) 28px
+    );
+  background-size: 220px 220px, 100% 28px;
+  line-height: 28px;
+}
+
+.paper-margin {
+  box-shadow:
+    inset 1.85rem 0 0 transparent,
+    inset 1.92rem 0 0 color-mix(in oklab, var(--color-rule) 55%, transparent),
+    var(--shadow-paper);
+  padding-left: 2.4rem;
+}
+
+@media (min-width: 640px) {
+  .paper-margin {
+    box-shadow:
+      inset 2.75rem 0 0 transparent,
+      inset 2.85rem 0 0 color-mix(in oklab, var(--color-rule) 55%, transparent),
+      var(--shadow-paper);
+    padding-left: 3.5rem;
+  }
+}
+
+.letterhead-rules {
+  background:
+    linear-gradient(var(--color-rule), var(--color-rule)) 0 0 / 100% 1px no-repeat,
+    linear-gradient(color-mix(in oklab, var(--color-rule) 45%, transparent), color-mix(in oklab, var(--color-rule) 45%, transparent)) 0 3px / 100% 1px no-repeat;
+}
+
+.field {
+  width: 100%;
+  min-width: 0;
+  border-radius: var(--radius-md);
+  background-color: var(--color-paper);
+  color: var(--color-foreground);
+  box-shadow:
+    inset 0 1px 0 color-mix(in oklab, white 40%, transparent),
+    0 0 0 1px color-mix(in oklab, var(--color-foreground) 12%, transparent);
+  outline: none;
+}
+
+.field:focus-visible {
+  box-shadow:
+    inset 0 1px 0 color-mix(in oklab, white 40%, transparent),
+    0 0 0 2px color-mix(in oklab, var(--color-primary) 40%, transparent);
+}
+
+.folio-shimmer {
+  background: linear-gradient(
+    90deg,
+    color-mix(in oklab, var(--color-muted) 70%, transparent) 0%,
+    color-mix(in oklab, var(--color-foreground) 8%, var(--color-muted)) 45%,
+    color-mix(in oklab, var(--color-muted) 70%, transparent) 100%
+  );
+  background-size: 200% 100%;
+  animation: folio-shimmer 1.35s linear infinite;
+}
+
+@keyframes folio-shimmer {
+  from {
+    background-position: 100% 0;
+  }
+  to {
+    background-position: -100% 0;
+  }
+}
+
+@keyframes folio-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 color-mix(in oklab, var(--color-rule) 35%, transparent);
+  }
+  50% {
+    box-shadow: 0 0 0 10px color-mix(in oklab, var(--color-rule) 0%, transparent);
+  }
+}
+
+.recording-pulse {
+  animation: folio-pulse 1.4s ease-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .folio-shimmer,
+  .recording-pulse {
+    animation: none;
+  }
+}
